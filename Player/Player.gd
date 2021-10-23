@@ -3,6 +3,8 @@
 
 extends KinematicBody2D
 
+class_name Player
+
 export var speed : float = 600
 export var jump_speed : float = -1000
 export var gravity : float = 3000
@@ -12,7 +14,7 @@ export var acceleration : float = 0.25
 var velocity : Vector2 = Vector2.ZERO
 var direction : int = 0
 
-var bullet_prefab : PackedScene = preload("res://Bullet.tscn")
+var bullet_prefab : PackedScene = preload("res://Bullets/Bullet.tscn")
 
 func get_input():
 	direction = 0
@@ -49,6 +51,7 @@ func check_shoot():
 		get_tree().current_scene.get_node("Bullets").add_child(bullet)
 		bullet.position = $BulletExit.global_position
 		bullet.direction = direction
+		bullet.node_shot_from = self
 
 func _physics_process(delta):
 	get_input()
