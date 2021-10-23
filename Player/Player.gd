@@ -6,7 +6,7 @@ extends KinematicBody2D
 class_name Player
 
 export var speed : float = 600
-export var jump_speed : float = -1000
+export var jump_speed : float = -2000
 export var gravity : float = 70
 export var friction : float = 0.1
 export var acceleration : float = 0.25
