@@ -21,10 +21,12 @@ func get_input():
 	direction = 0
 	if Input.is_action_pressed("walk_right"):
 		direction += 1
-		facing_right = true
 	if Input.is_action_pressed("walk_left"):
 		direction -= 1
-		facing_right = false
+	
+	# check if the facing direction is same as mouse
+	facing_right = get_viewport().get_mouse_position().x - self.position.x >= 0
+		
 
 func set_horizontal_movement():
 	if direction != 0:
