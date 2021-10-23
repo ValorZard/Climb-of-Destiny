@@ -1,3 +1,5 @@
+# Patrolling enemies walk back and forth between two points
+
 extends Enemy
 
 class_name PatrollingEnemy

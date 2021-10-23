@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 213.076
+
+[node name="StationaryEnemy" type="Node2D"]
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="base" type="Sprite" parent="Sprites"]
+scale = Vector2( 1, 0.5 )
+texture = ExtResource( 1 )
+
+[node name="neck" type="Sprite" parent="Sprites"]
+rotation = 0.0925025
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -32 )
+
+[node name="neck2" type="Sprite" parent="Sprites/neck"]
+position = Vector2( 0, -64 )
+rotation = 0.205949
+texture = ExtResource( 1 )
+offset = Vector2( 0, -32 )
+
+[node name="neck3" type="Sprite" parent="Sprites/neck/neck2"]
+position = Vector2( 0, -64 )
+rotation = 0.303687
+scale = Vector2( 1, 1 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -32 )
+
+[node name="head" type="Sprite" parent="Sprites/neck/neck2/neck3"]
+position = Vector2( 0, -32.9305 )
+rotation = 0.340339
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -32 )
+
+[node name="AttackRadius" type="Area2D" parent="."]
+visible = false
+
+[node name="CircleCollider" type="CollisionShape2D" parent="AttackRadius"]
+shape = SubResource( 1 )
