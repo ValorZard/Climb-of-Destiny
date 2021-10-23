@@ -10,6 +10,7 @@ var velocity := Vector2.ZERO
 var default_velocity := Vector2(800, 0)
 var damage : int = 10
 var facing_right := true
+var paused := false
 
 var node_shot_from : Node # the owner of this node
 
@@ -23,7 +24,6 @@ func destroy_self():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	self.position += velocity * delta
 	# set direction of velocity of bullet of the direction player is facing
 	if !facing_right:
 		if velocity.x > 0:
@@ -31,8 +31,12 @@ func _physics_process(delta):
 	else:
 		if velocity.x < 0:
 			velocity.x = -velocity.x
-	print($Timer.is_stopped())
-	print($Timer.time_left)
+	
+	if !paused:
+		self.position += velocity * delta
+	
+	#print($Timer.is_stopped())
+	#print($Timer.time_left)
 	# when timer is done, delete bullet so we dont have a bunch of random bullets exists
 	if $Timer.is_stopped():
 		destroy_self()
