@@ -31,8 +31,8 @@ func _physics_process(delta):
 	else:
 		if velocity.x < 0:
 			velocity.x = -velocity.x
-	print($Timer.is_stopped())
-	print($Timer.time_left)
+	#print($Timer.is_stopped())
+	#print($Timer.time_left)
 	# when timer is done, delete bullet so we dont have a bunch of random bullets exists
 	if $Timer.is_stopped():
 		destroy_self()

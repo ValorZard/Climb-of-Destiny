@@ -22,6 +22,7 @@ var bullet_prefab = preload("res://Bullets/Bullet.tscn")
 
 onready var bullet_timer: Timer = get_node("BulletTimer")
 onready var bullet_node: Node = get_tree().get_current_scene().get_node("Bullets")
+onready var bullet_exit: Node2D = get_node("BulletExit")
 
 
 func _on_BulletTimer_timeout():
@@ -32,13 +33,13 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _physics_process(_delta):
+	shoot()
 	move()
 
 	
 # Calls each function to manipulate velocity
 func move():
-	shoot()
 	move_horizontal()
 	move_gravity()
 	move_jump()
@@ -51,10 +52,17 @@ func instance_bullet():
 	var bullet = bullet_prefab.instance()
 	bullet_node.add_child(bullet)
 	return bullet
+
+func set_bullet_position(bullet):
+	var target_position = bullet_exit.get_global_position()
+	bullet.set_position(target_position)
 	
+
+# Instantiate and set position of bullets each time timer fires
 func shoot():
 	if Input.is_action_pressed("shoot") and can_shoot:
 		var bullet = instance_bullet()
+		set_bullet_position(bullet)
 		can_shoot = false
 		bullet_timer.start(0)
 		
