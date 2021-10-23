@@ -7,9 +7,13 @@ class_name Player
 
 export var speed : float = 600
 export var jump_speed : float = -1000
-export var gravity : float = 3000
+export var gravity : float = 100
 export var friction : float = 0.1
 export var acceleration : float = 0.25
+
+export var max_air_jumps : int = 1
+var air_jumps : int = max_air_jumps
+var is_jumping : bool = false
 
 var velocity : Vector2 = Vector2.ZERO
 var direction : int = 0
@@ -35,20 +39,32 @@ func set_horizontal_movement():
 		velocity.x = lerp(velocity.x, 0, friction)
 
 func set_vertical_movement(delta):
-	velocity.y += gravity * delta
+	# when on floor and jump is not buffered, there shouldn't be any y velocity
+	# if jump is buffered, y velocity should equal jump speed
+	# if is in air, the player should be affected by gravity
+	if is_on_floor() and !is_jumping:
+		velocity.y = 0
+		# refill air jumps now that we've landed
+		air_jumps = max_air_jumps
+	elif is_on_floor():
+		is_jumping = false
+	else:
+		velocity.y += gravity
 
 func set_movement(delta):
 	set_horizontal_movement()
+	do_jump()
 	set_vertical_movement(delta)
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
-	
-	do_jump()
 
 func do_jump():
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor():
 			velocity.y = jump_speed
+		elif air_jumps > 0:
+			velocity.y = jump_speed
+			air_jumps -= 1
 
 func set_bullet_exit():
 	# flip position of bullet exit based on facing direction
