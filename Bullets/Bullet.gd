@@ -8,7 +8,7 @@ extends Area2D
 var velocity := Vector2.ZERO
 var default_velocity := Vector2(800, 0)
 var damage : int = 10
-var direction : int = 0
+var facing_right := true
 
 var node_shot_from : Node # the owner of this node
 
@@ -20,10 +20,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	self.position += velocity * delta
-	if direction < 0:
+	# set direction of velocity of bullet of the direction player is facing
+	if !facing_right:
 		if velocity.x > 0:
 			velocity.x = -velocity.x
-	elif direction > 0:
+	else:
 		if velocity.x < 0:
 			velocity.x = -velocity.x
 

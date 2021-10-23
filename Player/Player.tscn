@@ -22,3 +22,12 @@ position = Vector2( 60, 0 )
 [node name="BulletTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+margin_left = -22.2236
+margin_top = -60.3212
+margin_right = 17.7764
+margin_bottom = -46.3212
+__meta__ = {
+"_edit_use_anchors_": false
+}

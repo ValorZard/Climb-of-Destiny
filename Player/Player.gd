@@ -13,6 +13,7 @@ export var acceleration : float = 0.25
 
 var velocity : Vector2 = Vector2.ZERO
 var direction : int = 0
+var facing_right := true
 
 var bullet_prefab : PackedScene = preload("res://Bullets/Bullet.tscn")
 
@@ -20,8 +21,10 @@ func get_input():
 	direction = 0
 	if Input.is_action_pressed("walk_right"):
 		direction += 1
+		facing_right = true
 	if Input.is_action_pressed("walk_left"):
 		direction -= 1
+		facing_right = false
 
 func set_horizontal_movement():
 	if direction != 0:
@@ -45,6 +48,13 @@ func do_jump():
 		if is_on_floor():
 			velocity.y = jump_speed
 
+func set_bullet_exit():
+	# flip position of bullet exit based on facing direction
+	if facing_right and $BulletExit.position.x < 0:
+		$BulletExit.position.x = -$BulletExit.position.x
+	elif !facing_right and $BulletExit.position.x > 0:
+		$BulletExit.position.x = -$BulletExit.position.x
+
 func check_shoot():
 	if Input.is_action_pressed("shoot"):
 		# if the timer between shots is over
@@ -54,7 +64,7 @@ func check_shoot():
 			get_tree().current_scene.get_node("Bullets").add_child(bullet)
 			# set bullet information
 			bullet.position = $BulletExit.global_position
-			bullet.direction = direction
+			bullet.facing_right = facing_right
 			bullet.node_shot_from = self
 			# start timer again
 			$BulletTimer.start()
@@ -63,4 +73,11 @@ func check_shoot():
 func _physics_process(delta):
 	get_input()
 	set_movement(delta)
+	set_bullet_exit()
 	check_shoot()
+	print_player()
+
+func print_player():
+	var print_string := ""
+	print_string += "Direction: " + str(direction) + "\n"
+	$Label.text = print_string
