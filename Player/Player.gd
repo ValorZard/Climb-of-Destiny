@@ -7,7 +7,7 @@ class_name Player
 
 export var speed : float = 600
 export var jump_speed : float = -1000
-export var gravity : float = 100
+export var gravity : float = 70
 export var friction : float = 0.1
 export var acceleration : float = 0.25
 
@@ -53,8 +53,8 @@ func set_vertical_movement(delta):
 
 func set_movement(delta):
 	set_horizontal_movement()
-	do_jump()
 	set_vertical_movement(delta)
+	do_jump()
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
 
