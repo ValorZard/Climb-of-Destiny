@@ -14,6 +14,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	"""
 	if $Timer.is_stopped():
 		var bullet_position = Vector2(rand_range(-500, 500), rand_range(-500, 500))
 		# up left side of circle
@@ -53,3 +54,5 @@ func _physics_process(delta):
 			bullet.velocity = velocity
 			i += 1
 		$Timer.start()
+		"""
+	pass
