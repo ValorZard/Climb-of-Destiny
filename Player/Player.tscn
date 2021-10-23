@@ -18,3 +18,7 @@ shape = SubResource( 1 )
 
 [node name="BulletExit" type="Node2D" parent="."]
 position = Vector2( 60, 0 )
+
+[node name="BulletTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true

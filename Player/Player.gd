@@ -47,11 +47,18 @@ func do_jump():
 
 func check_shoot():
 	if Input.is_action_pressed("shoot"):
-		var bullet := bullet_prefab.instance()
-		get_tree().current_scene.get_node("Bullets").add_child(bullet)
-		bullet.position = $BulletExit.global_position
-		bullet.direction = direction
-		bullet.node_shot_from = self
+		# if the timer between shots is over
+		if $BulletTimer.is_stopped():
+			# spawn bullet
+			var bullet := bullet_prefab.instance()
+			get_tree().current_scene.get_node("Bullets").add_child(bullet)
+			# set bullet information
+			bullet.position = $BulletExit.global_position
+			bullet.direction = direction
+			bullet.node_shot_from = self
+			# start timer again
+			$BulletTimer.start()
+			
 
 func _physics_process(delta):
 	get_input()
