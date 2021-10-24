@@ -10,6 +10,8 @@ export var friction : float = 0.1
 
 export var max_air_jumps : int = 3
 
+export var health : int = 100
+
 var walk_direction: int = 0
 var velocity: Vector2 = Vector2.ZERO
 var air_jumps: int = max_air_jumps
@@ -38,11 +40,18 @@ func _on_AnimatedSprite_animation_finished():
 func _ready():
 	sprite_node.play()
 
+func _process(_delta):
+	handle_death()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	shoot()
 	move()
 	play_anim()
+
+func damage(dmg):
+	health = max(0, health-dmg)
+	return health
 
 # Calls each function to manipulate velocity
 func move():
@@ -53,6 +62,10 @@ func move():
 	
 	# Commit velocities and handle collisions
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func handle_death():
+	if health == 0:
+		print("you dead mf, make this do something")
 
 # Get all BulletSpawners that are children of this node
 func get_child_bullet_spawners():
@@ -67,9 +80,10 @@ func get_child_bullet_spawners():
 func get_closest_bullet_spawner():
 	var i_distance: float = INF
 	var i_closest: BulletSpawner
-	var mouse_pos = get_viewport().get_mouse_position()
+	var mouse_pos = get_global_mouse_position()
 	for spawner in bullet_spawners:
 		var cur_distance = spawner.get_global_position().distance_to(mouse_pos)
+		print(cur_distance)
 		if cur_distance < i_distance:
 			i_distance = cur_distance
 			i_closest = spawner

@@ -1,25 +1,29 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enviroment/Platform.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/StationaryEnemy/Snapper/Snapper.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ScrollingCamera.gd" type="Script" id=4]
+[ext_resource path="res://Particles/DeathPoof.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Particles/Coins.tscn" type="PackedScene" id=6]
 
 [node name="Root" type="Node2D"]
 
-[node name="Platform" parent="." instance=ExtResource( 2 )]
-position = Vector2( 439.072, 432.945 )
-scale = Vector2( 8, 1 )
-
-[node name="Bullets" type="Node2D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 295.922, 337.518 )
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 217.236, -36.3942 )
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -1.15988, -143.348 )
 current = true
 script = ExtResource( 4 )
 
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 572.272, 330.155 )
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -400.947, -126.003 )
+
+[node name="Platform" parent="." instance=ExtResource( 2 )]
+scale = Vector2( 20, 1 )
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="Snapper" parent="." instance=ExtResource( 3 )]
+position = Vector2( 207.95, -39.685 )
+scale = Vector2( -2, 2 )
+death_particles = ExtResource( 5 )
+coin_particles = ExtResource( 6 )

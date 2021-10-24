@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://Enemies/Enemy.gd"
 }, {
 "base": "Enemy",
+"class": "FlyingEnemy",
+"language": "GDScript",
+"path": "res://Enemies/FlyingEnemy/FlyingEnemy.gd"
+}, {
+"base": "Enemy",
 "class": "PatrollingEnemy",
 "language": "GDScript",
 "path": "res://Enemies/PatrollingEnemy/PatrollingEnemy.gd"
@@ -43,6 +48,7 @@ _global_script_class_icons={
 "Bullet": "",
 "BulletSpawner": "",
 "Enemy": "",
+"FlyingEnemy": "",
 "PatrollingEnemy": "",
 "Player": "",
 "StationaryEnemy": ""
