@@ -1,8 +1,8 @@
 extends Camera2D
 
-onready var player = get_node("../Player")
+onready var player = get_tree().current_scene.get_node("Player")
 
 func _process(delta):
-	self.position.y = player.get_global_position().y - 300
-	self.position.x = 0
+	position.y = player.get_global_position().y - 300
+	position.x = 0
 
