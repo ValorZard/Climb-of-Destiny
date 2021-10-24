@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Enemies/Spider/webspit.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/ScaryPlant/Seed.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 2.87313
+
+[node name="WebSpit" type="Area2D"]
+script = ExtResource( 2 )
+move_speed = 500.0
+damage = 25
+rotation_offset = -1.571
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
