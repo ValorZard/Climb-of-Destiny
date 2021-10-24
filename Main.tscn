@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[ext_resource path="res://ScrollingCamera.gd" type="Script" id=4]
+[ext_resource path="res://Coin.png" type="Texture" id=6]
 
-[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enviroment/Platform.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Enemies/Enemy.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Camera2D.gd" type="Script" id=4]
-[ext_resource path="res://Particles/Poof.tscn" type="PackedScene" id=5]
+[sub_resource type="CanvasItemMaterial" id=1]
+
 
 [node name="Root" type="Node2D"]
 
@@ -32,7 +30,7 @@ drag_margin_bottom = 0.25
 script = ExtResource( 4 )
 
 [node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1096.85, 1002.71 )
+
 scale = Vector2( 2.5, 2.5 )
 
 [node name="Platform2" parent="." instance=ExtResource( 2 )]
@@ -40,16 +38,17 @@ position = Vector2( 338.526, 856.507 )
 scale = Vector2( 11.92, 1 )
 
 [node name="Platform3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 960.258, 1124.67 )
-scale = Vector2( 33.4513, -1.181 )
+
+position = Vector2( 930.137, 1119.65 )
+scale = Vector2( 29.0113, -1.181 )
 
 [node name="Platform4" parent="." instance=ExtResource( 2 )]
-position = Vector2( -49.3363, -360.584 )
-scale = Vector2( 1.64342, -45.1181 )
+position = Vector2( -59.3768, -701.958 )
+scale = Vector2( 1.64342, -58.0781 )
 
 [node name="Platform5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1911.83, -361.67 )
-scale = Vector2( 1.64342, -45.1181 )
+position = Vector2( 1900.79, -698.024 )
+scale = Vector2( 1.64342, -58.0381 )
 
 [node name="Platform6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 981.008, 606.088 )
@@ -72,15 +71,17 @@ position = Vector2( 1518.45, -335.76 )
 scale = Vector2( 10.6726, -1.01241 )
 
 [node name="Platform11" parent="." instance=ExtResource( 2 )]
-position = Vector2( 1087.22, -703.52 )
+
+position = Vector2( 1092.24, -703.52 )
 scale = Vector2( 10.6726, -1.01241 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 213.092, 653.096 )
+position = Vector2( 248.233, -1139.12 )
 scale = Vector2( 2.5, 2.5 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1091.9, -819.306 )
+position = Vector2( 1528.66, -1055.26 )
+
 scale = Vector2( 2.5, 2.5 )
 
 [node name="Enemy4" parent="." instance=ExtResource( 3 )]
@@ -92,9 +93,20 @@ position = Vector2( 155.03, -499.42 )
 scale = Vector2( 2.5, 2.5 )
 
 [node name="Enemy6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1777.93, 275.758 )
+
+position = Vector2( 1471.7, 285.798 )
 scale = Vector2( 2.5, 2.5 )
 
-[node name="Poof" parent="." instance=ExtResource( 5 )]
-position = Vector2( 815.901, 742.346 )
-one_shot = false
+[node name="Platform12" parent="." instance=ExtResource( 2 )]
+position = Vector2( 449.461, -1017.53 )
+scale = Vector2( 16.9126, -1.01241 )
+
+[node name="Platform13" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1559.12, -1391.29 )
+scale = Vector2( 10.6726, -1.01241 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+material = SubResource( 1 )
+amount = 5
+texture = ExtResource( 6 )
+
