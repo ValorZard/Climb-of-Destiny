@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/spider.png-01bb174acacde9e032453c8de9edd810.stex"
+path="res://.import/spider.png-bef025f902bd9adf926c51ec7d1ece64.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Enemies/spider.png"
-dest_files=[ "res://.import/spider.png-01bb174acacde9e032453c8de9edd810.stex" ]
+source_file="res://Enemies/Spider/spider.png"
+dest_files=[ "res://.import/spider.png-bef025f902bd9adf926c51ec7d1ece64.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
