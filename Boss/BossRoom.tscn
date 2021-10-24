@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Enviroment/Platform.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Boss/AttackPattern2.gd" type="Script" id=3]
+[ext_resource path="res://Boss/AttackPattern1.gd" type="Script" id=4]
+[ext_resource path="res://Boss/AttackPattern3.gd" type="Script" id=5]
+
+[node name="Root" type="Node2D"]
+
+[node name="AttackPattern1" type="Node2D" parent="."]
+visible = false
+script = ExtResource( 4 )
+
+[node name="Bullets" type="Node" parent="."]
+
+[node name="Platform" parent="." instance=ExtResource( 1 )]
+position = Vector2( 414.483, 477.437 )
+scale = Vector2( 8, 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 417.034, 215.447 )
+
+[node name="AttackPattern2" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Timer" type="Timer" parent="AttackPattern2"]
+wait_time = 0.1
+one_shot = true
+
+[node name="AttackPattern3" type="Node" parent="."]
+script = ExtResource( 5 )
+
+[node name="Timer" type="Timer" parent="AttackPattern3"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="AttackPattern3/Timer" to="AttackPattern3" method="_on_Timer_timeout"]
