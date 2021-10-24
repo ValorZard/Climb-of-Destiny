@@ -23,6 +23,12 @@ var next_location := 1;
 var velocity : Vector2 = Vector2.ZERO;
 var direction : int = 0;
 
+onready var AttackTimer = $DamageArea/AttackTimer;
+var touching_player = false;
+var player;
+
+var can_attack = true;
+
 func _ready():
 	# start in random facing direction
 	# specify instead ?
@@ -53,5 +59,22 @@ func _physics_process(delta):
 	
 	velocity.x = direction * move_speed;
 	move_and_slide(velocity, Vector2.UP);
-	
-	
+
+func _process(delta):
+	if touching_player && player != null && can_attack:
+		AttackTimer.start();
+		player.damage(damage);
+		can_attack = false;
+
+func _on_DamageArea_body_entered(body):
+	if body is Player:
+		touching_player = true;
+		player = body;
+
+func _on_DamageArea_body_exited(body):
+	if body is Player:
+		touching_player = false;
+		player = null;
+
+func _on_AttackTimer_timeout():
+	can_attack = true;
