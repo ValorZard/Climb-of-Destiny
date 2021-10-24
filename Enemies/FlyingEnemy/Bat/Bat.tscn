@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Enemies/FlyingEnemy/Bat/bat_0.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/FlyingEnemy/FlyingEnemy.gd" type="Script" id=2]
@@ -27,10 +27,18 @@ tracks/0/keys = {
 "values": [ ExtResource( 1 ), ExtResource( 3 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=4]
+radius = 5.1564
+
 [node name="Bat" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 2 )
 health = 2
-move_speed = 60.0
+move_speed = 100.0
+erratic_movement_level = 2.0
+erratic_movement_amount = 100.0
+buffer_zone = 7.0
 
 [node name="Icon" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -47,5 +55,16 @@ shape = SubResource( 2 )
 autoplay = "Bat"
 anims/Bat = SubResource( 3 )
 
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2( 0, -0.266972 )
+shape = SubResource( 4 )
+
+[node name="AttackTimer" type="Timer" parent="DamageArea"]
+
 [connection signal="body_entered" from="PlayerDetectionRadius" to="." method="_on_PlayerDetectionRadius_body_entered"]
 [connection signal="body_exited" from="PlayerDetectionRadius" to="." method="_on_PlayerDetectionRadius_body_exited"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_DamageArea_body_exited"]
+[connection signal="timeout" from="DamageArea/AttackTimer" to="." method="_on_AttackTimer_timeout"]

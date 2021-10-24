@@ -18,9 +18,16 @@ var player;
 var rng : RandomNumberGenerator;
 var clock : float = 0;
 
+var can_attack = true;
+var touching_player;
+
+onready var AttackTimer = $DamageArea/AttackTimer;
+
 func _ready():
 	rng = RandomNumberGenerator.new();
 	rng.randomize();
+	
+	AttackTimer.wait_time = attack_speed;
 
 func _physics_process(delta):
 	if player == null:
@@ -58,3 +65,21 @@ func _on_PlayerDetectionRadius_body_entered(body):
 func _on_PlayerDetectionRadius_body_exited(body):
 	if body is Player:
 		player = null;
+
+func _process(delta):
+	if touching_player && player != null && can_attack:
+		AttackTimer.start();
+		player.damage(damage);
+		can_attack = false;
+
+func _on_DamageArea_body_entered(body):
+	if body is Player:
+		touching_player = true;
+
+func _on_DamageArea_body_exited(body):
+	if body is Player:
+		touching_player = false;
+
+
+func _on_AttackTimer_timeout():
+	can_attack = true;

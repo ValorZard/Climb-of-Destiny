@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemies/PatrollingEnemy/PatrollingEnemy.gd" type="Script" id=1]
 [ext_resource path="res://Enemies/PatrollingEnemy/Bushy/000.png" type="Texture" id=2]
@@ -6,7 +6,7 @@
 [ext_resource path="res://Enemies/PatrollingEnemy/Bushy/003.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/PatrollingEnemy/Bushy/001.png" type="Texture" id=5]
 
-[sub_resource type="CapsuleShape2D" id=3]
+[sub_resource type="CapsuleShape2D" id=1]
 height = 7.97795
 
 [sub_resource type="Animation" id=2]
@@ -26,7 +26,12 @@ tracks/0/keys = {
 "values": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ]
 }
 
+[sub_resource type="CircleShape2D" id=3]
+radius = 8.41051
+
 [node name="Bushy" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
 script = ExtResource( 1 )
 damage = 2
 attack_speed = 1.0
@@ -36,8 +41,20 @@ move_speed = 100.0
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "bushy_walk"
 anims/bushy_walk = SubResource( 2 )
+
+[node name="DamageArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2( -0.979988, -3.5633 )
+shape = SubResource( 3 )
+
+[node name="AttackTimer" type="Timer" parent="DamageArea"]
+
+[connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]
+[connection signal="body_exited" from="DamageArea" to="." method="_on_DamageArea_body_exited"]
+[connection signal="timeout" from="DamageArea/AttackTimer" to="." method="_on_AttackTimer_timeout"]

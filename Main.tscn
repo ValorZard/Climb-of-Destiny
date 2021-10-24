@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enviroment/Platform.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Enemies/StationaryEnemy/Snapper/Snapper.tscn" type="PackedScene" id=3]
 [ext_resource path="res://ScrollingCamera.gd" type="Script" id=4]
-[ext_resource path="res://Particles/DeathPoof.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Particles/Coins.tscn" type="PackedScene" id=6]
 
 [node name="Root" type="Node2D"]
 
@@ -25,5 +23,3 @@ scale = Vector2( 20, 1 )
 [node name="Snapper" parent="." instance=ExtResource( 3 )]
 position = Vector2( 207.95, -39.685 )
 scale = Vector2( -2, 2 )
-death_particles = ExtResource( 5 )
-coin_particles = ExtResource( 6 )
