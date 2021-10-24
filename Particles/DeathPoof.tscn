@@ -30,6 +30,7 @@ scale_curve = SubResource( 4 )
 color_ramp = SubResource( 2 )
 
 [node name="DeathPoof" type="Particles2D"]
+scale = Vector2( 2, 2 )
 emitting = false
 amount = 20
 lifetime = 3.0

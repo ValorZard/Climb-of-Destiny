@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Enemies/ScaryPlant/BossPlant_Level2.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/ScaryPlant/ScaryPlant.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 421.446
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 27.4357
+
+[sub_resource type="CapsuleShape2D" id=3]
+
+[node name="ScaryPlant" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="Icon" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, 30 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 128, 90 )
+
+[node name="PlayerDetectionRadius" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionRadius"]
+shape = SubResource( 1 )
+
+[node name="Collider_main" type="CollisionShape2D" parent="."]
+position = Vector2( -0.199997, 33.6 )
+shape = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider_main"]
+position = Vector2( 40.8, -18.8 )
+rotation = -1.19031
+scale = Vector2( 1, 1 )
+shape = SubResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Collider_main"]
+position = Vector2( -42.8, -18.6 )
+rotation = 1.22173
+shape = SubResource( 3 )
