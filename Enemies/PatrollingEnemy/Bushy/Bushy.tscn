@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Enemies/PatrollingEnemy/PatrollingEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Enemies/PatrollingEnemy/Bushy/000.png" type="Texture" id=2]
+[ext_resource path="res://Enemies/PatrollingEnemy/Bushy/002.png" type="Texture" id=3]
+[ext_resource path="res://Enemies/PatrollingEnemy/Bushy/003.png" type="Texture" id=4]
+[ext_resource path="res://Enemies/PatrollingEnemy/Bushy/001.png" type="Texture" id=5]
+
+[sub_resource type="CapsuleShape2D" id=3]
+height = 7.97795
+
+[sub_resource type="Animation" id=2]
+resource_name = "bushy_walk"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ]
+}
+
+[node name="Bushy" type="KinematicBody2D"]
+script = ExtResource( 1 )
+damage = 2
+attack_speed = 1.0
+move_speed = 100.0
+
+[node name="icon" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "bushy_walk"
+anims/bushy_walk = SubResource( 2 )

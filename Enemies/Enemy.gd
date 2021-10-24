@@ -3,6 +3,7 @@ extends KinematicBody2D
 class_name Enemy
 
 # todo: animation stuff, just single sprite for now
+# depracated
 export var sprite : Resource;
 
 # movement / combat variables

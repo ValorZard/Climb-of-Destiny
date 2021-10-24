@@ -42,10 +42,14 @@ func _physics_process(delta):
 		# when enemy reaches buffer zone on either side, switch target location
 		if transform.origin.x < global_locations[next_location].x - buffer_zone:
 			direction = 1;
+			#TODO
+			$icon.flip_h = true;
 		elif transform.origin.x > global_locations[next_location].x + buffer_zone:
 			direction = -1;
+			$icon.flip_h = false;
 		else:
 			next_location = !next_location;
+			$icon.flip_h = !$icon.flip_h;
 	
 	velocity.x = direction * move_speed;
 	move_and_slide(velocity, Vector2.UP);
