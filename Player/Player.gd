@@ -35,6 +35,9 @@ func _on_AnimatedSprite_animation_finished():
 	if sprite_node.get_animation() == "Jump":
 		jump_anim_finished = true
 
+func _ready():
+	sprite_node.play()
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
 	shoot()
@@ -120,7 +123,8 @@ func move_jump():
 func play_anim():
 	if just_jumped:
 		jump_anim_finished = false
-		sprite_node.set_animation("Jump")
+		sprite_node.play("Jump")
+		sprite_node.set_frame(0)
 	if not jump_anim_finished:
 		return
 	if abs(velocity.x) > 100:
