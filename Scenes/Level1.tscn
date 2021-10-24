@@ -36,4 +36,6 @@ position = Vector2( 453.475, 544.394 )
 scale = Vector2( 2, 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 518.414, 308.651 )
+current = true
 script = ExtResource( 3 )
