@@ -42,6 +42,10 @@ config/name="Tower Rougelike"
 run/main_scene="res://Main.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray(  )
+
 [input]
 
 walk_left={
