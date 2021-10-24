@@ -14,20 +14,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Bullets/Bullet.gd"
 }, {
+"base": "Node2D",
+"class": "BulletSpawner",
+"language": "GDScript",
+"path": "res://Bullets/BulletSpawner.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Enemy",
 "language": "GDScript",
 "path": "res://Enemies/Enemy.gd"
-}, {
-"base": "KinematicBody2D",
-"class": "Player",
-"language": "GDScript",
-"path": "res://Player/Player.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
-"Enemy": "",
-"Player": ""
+"BulletSpawner": "",
+"Enemy": ""
 }
 
 [application]
