@@ -24,16 +24,28 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemies/Enemy.gd"
 }, {
+"base": "Enemy",
+"class": "PatrollingEnemy",
+"language": "GDScript",
+"path": "res://Enemies/PatrollingEnemy/PatrollingEnemy.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player/Player.gd"
+}, {
+"base": "Enemy",
+"class": "StationaryEnemy",
+"language": "GDScript",
+"path": "res://Enemies/StationaryEnemy/StationaryEnemy.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "BulletSpawner": "",
 "Enemy": "",
-"Player": ""
+"PatrollingEnemy": "",
+"Player": "",
+"StationaryEnemy": ""
 }
 
 [application]
