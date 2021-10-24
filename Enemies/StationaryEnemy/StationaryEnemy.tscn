@@ -198,3 +198,4 @@ disabled = true
 
 [connection signal="body_entered" from="Sprites/neck/neck2/neck3/head/HeadHitbox" to="." method="_on_HeadHitbox_body_entered"]
 [connection signal="body_entered" from="AttackRadius" to="." method="_on_AttackRadius_body_entered"]
+[connection signal="body_exited" from="AttackRadius" to="." method="_on_AttackRadius_body_exited"]
