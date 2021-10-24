@@ -4,6 +4,7 @@ extends Enemy
 
 class_name StationaryEnemy
 
+
 var player : KinematicBody2D;
 
 # references
@@ -27,7 +28,7 @@ func _on_AttackRadius_body_exited(body):
 # hitbox is enabled/disabled in the Attack animation 
 func _on_HeadHitbox_body_entered(body):
 	if body is Player:
-		print("Player hit! but player health isn't set up yet. TODO");
+		body.damage(damage)
 
 func play_idle_animation():
 	AnimationPlayer.play("Idle");

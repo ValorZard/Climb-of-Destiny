@@ -1,6 +1,8 @@
 extends Camera2D
 
-func _physicsprocess(delta):
-	Camera2D.position.y = Player.position.y
-	Camera2D.position.x = 0
+onready var player = get_node("../Player")
+
+func _process(delta):
+	self.position.y = player.get_global_position().y - 300
+	self.position.x = 0
 
