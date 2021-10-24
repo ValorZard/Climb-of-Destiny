@@ -1,16 +1,15 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Enemies/StationaryEnemy/StationaryEnemy.gd" type="Script" id=2]
 [ext_resource path="res://Enemies/StationaryEnemy/Snapper/snapper_neck.png" type="Texture" id=3]
 [ext_resource path="res://Enemies/StationaryEnemy/Snapper/snapper_head.png" type="Texture" id=4]
 [ext_resource path="res://Enemies/StationaryEnemy/Snapper/snapper_leafs.png" type="Texture" id=5]
-[ext_resource path="res://Enemies/StationaryEnemy/Snapper/snapper_head_3.png" type="Texture" id=6]
-[ext_resource path="res://Enemies/StationaryEnemy/Snapper/snapper_head_2.png" type="Texture" id=7]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 15.8258
 
+<<<<<<< HEAD
 [sub_resource type="Animation" id=2]
 resource_name = "HeadIdle"
 length = 0.8
@@ -30,6 +29,9 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=3]
+=======
+[sub_resource type="CircleShape2D" id=2]
+>>>>>>> 144a37d (shop scene)
 radius = 70.3886
 
 [sub_resource type="Animation" id=4]
@@ -424,7 +426,10 @@ disabled = true
 
 [node name="HeadAnimPlayer" type="AnimationPlayer" parent="Sprites/neck/neck2/neck3/neck4/neck5/neck6/head"]
 autoplay = "HeadIdle"
+<<<<<<< HEAD
 anims/HeadIdle = SubResource( 2 )
+=======
+>>>>>>> 144a37d (shop scene)
 
 [node name="left_leaf" type="Sprite" parent="Sprites"]
 position = Vector2( -1.91095, -0.702657 )
