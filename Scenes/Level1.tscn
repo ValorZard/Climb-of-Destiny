@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scenes/MainTileset.tres" type="TileSet" id=1]
-[ext_resource path="res://Textures/Rouge_Idle.png" type="Texture" id=2]
-[ext_resource path="res://Textures/mushroomboi.png" type="Texture" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ScrollingCamera.gd" type="Script" id=3]
 
 [node name="Node2D" type="Node2D"]
 
@@ -18,18 +18,24 @@ scale = Vector2( 2, 2 )
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
+tile_data = PoolIntArray( 131076, 13, 0, 131077, 14, 0, 131078, 14, 0, 131079, 14, 0, 131080, 14, 0, 131081, 14, 0, 131082, 14, 0, 131083, 15, 0, 655373, 13, 0, 655374, 14, 0, 655375, 14, 0, 655376, 14, 0, 655377, 14, 0, 655378, 15, 0, 917508, 13, 0, 917509, 14, 0, 917510, 14, 0, 917511, 14, 0, 917512, 14, 0, 917513, 14, 0, 917514, 14, 0, 917515, 15, 0 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 225.937, 311.258 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 571.682, 523.286 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="Sprite"]
 position = Vector2( 571.682, 523.286 )
 scale = Vector2( 3, 3 )
-texture = ExtResource( 2 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 453.475, 544.394 )
 scale = Vector2( 2, 2 )
-texture = ExtResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 518.414, 308.651 )
+current = true
+script = ExtResource( 3 )

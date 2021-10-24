@@ -95,7 +95,7 @@ zoom = Vector2( 0.4, 0.4 )
 position = Vector2( 760.608, 457.645 )
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 2 )
-frame = 6
+frame = 2
 playing = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
