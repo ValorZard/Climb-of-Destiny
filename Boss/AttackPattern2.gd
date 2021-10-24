@@ -25,3 +25,4 @@ func _physics_process(delta):
 		bullet.position = bullet_position
 		var velocity : Vector2 = Vector2(1, 1) * 50
 		bullet.velocity = velocity
+		$Timer.start()
