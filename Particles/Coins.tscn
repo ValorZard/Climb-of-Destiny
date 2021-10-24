@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Coin.png" type="Texture" id=1]
+[ext_resource path="res://Particles/Coins.gd" type="Script" id=2]
 
 [sub_resource type="ParticlesMaterial" id=1]
 emission_shape = 1
@@ -18,6 +19,18 @@ scale = 5.0
 
 [node name="Coins" type="Particles2D"]
 position = Vector2( 257.667, 551.535 )
+scale = Vector2( 0.25, 0.25 )
+emitting = false
 amount = 5
+one_shot = true
+explosiveness = 0.8
 process_material = SubResource( 1 )
 texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.75
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

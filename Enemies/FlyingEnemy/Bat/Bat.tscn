@@ -1,0 +1,51 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemies/FlyingEnemy/Bat/bat_0.png" type="Texture" id=1]
+[ext_resource path="res://Enemies/FlyingEnemy/FlyingEnemy.gd" type="Script" id=2]
+[ext_resource path="res://Enemies/FlyingEnemy/Bat/bat_1.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 16.235
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 469.154
+
+[sub_resource type="Animation" id=3]
+resource_name = "Bat"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Icon:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ), ExtResource( 3 ) ]
+}
+
+[node name="Bat" type="KinematicBody2D"]
+script = ExtResource( 2 )
+health = 2
+move_speed = 60.0
+
+[node name="Icon" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="PlayerDetectionRadius" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionRadius"]
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Bat"
+anims/Bat = SubResource( 3 )
+
+[connection signal="body_entered" from="PlayerDetectionRadius" to="." method="_on_PlayerDetectionRadius_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionRadius" to="." method="_on_PlayerDetectionRadius_body_exited"]
