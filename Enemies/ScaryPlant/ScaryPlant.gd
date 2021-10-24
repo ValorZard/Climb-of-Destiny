@@ -56,6 +56,6 @@ func _on_SpineWaveTimer_timeout():
 	for wing in wings:
 		for spawner in wing.get_children():
 			var spine_instance = spine_projectile.instance();
-			spine_instance.transform.origin = spawner.transform.origin;
+			spine_instance.global_position = spawner.global_position;
 			spine_instance.rotation_degrees = rotation_degrees;
 			get_tree().root.add_child(spine_instance);
