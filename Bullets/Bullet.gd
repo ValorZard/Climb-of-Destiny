@@ -12,7 +12,7 @@ func _on_DespawnTimer_timeout():
 
 func _on_Bullet_body_entered(body):
 	if body is Enemy:
-		body.health -= 1
+		body.Damage(1)
 	if !body.is_in_group("Bullets"):
 		destroy_self()
 

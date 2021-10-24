@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 export var walk_speed : float = 600
 export var walk_acceleration : float = 0.25
 export var jump_speed : float = -1000
