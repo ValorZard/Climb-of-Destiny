@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Scenes/TreesTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/OutsideTileset.tres" type="TileSet" id=2]
@@ -22,14 +22,14 @@
 [ext_resource path="res://Textures/Shop/000.png" type="Texture" id=20]
 [ext_resource path="res://Textures/Shop/002.png" type="Texture" id=21]
 [ext_resource path="res://Textures/Shop/003.png" type="Texture" id=22]
+[ext_resource path="res://Textures/Shop/shop_icon.png" type="Texture" id=23]
+[ext_resource path="res://Textures/Shop/button_normal.png" type="Texture" id=24]
+[ext_resource path="res://Textures/Shop/button_pressed.png" type="Texture" id=25]
+[ext_resource path="res://Textures/Shop/button_normal_reversed.png" type="Texture" id=26]
+[ext_resource path="res://Textures/Shop/button_pressed_reversed.png" type="Texture" id=27]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 16 ), ExtResource( 5 ), ExtResource( 17 ) ],
-"loop": true,
-"name": "Run",
-"speed": 10.0
-}, {
 "frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "Idle",
@@ -39,6 +39,11 @@ animations = [ {
 "loop": false,
 "name": "Jump",
 "speed": 8.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 12 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 3 ), ExtResource( 16 ), ExtResource( 5 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "Run",
+"speed": 10.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
@@ -78,7 +83,7 @@ scale = Vector2( 2.046, 2.046 )
 z_index = 1
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 2
+frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -90,5 +95,57 @@ zoom = Vector2( 0.4, 0.4 )
 position = Vector2( 760.608, 457.645 )
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 2 )
-frame = 6
+frame = 2
 playing = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Shop" type="HBoxContainer" parent="CanvasLayer"]
+margin_left = 350.0
+margin_top = 200.0
+margin_right = 400.0
+margin_bottom = 225.0
+rect_scale = Vector2( 6, 6 )
+custom_constants/separation = -2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Shop"]
+margin_right = 14.0
+margin_bottom = 25.0
+rect_pivot_offset = Vector2( 0, 12.5 )
+size_flags_horizontal = 3
+texture_normal = ExtResource( 26 )
+texture_pressed = ExtResource( 27 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Shop"]
+margin_left = 12.0
+margin_right = 38.0
+margin_bottom = 25.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource( 23 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/Shop"]
+margin_left = 36.0
+margin_right = 50.0
+margin_bottom = 25.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 24 )
+texture_pressed = ExtResource( 25 )
+expand = true
+stretch_mode = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
