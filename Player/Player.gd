@@ -65,7 +65,7 @@ func move():
 
 func handle_death():
 	if health == 0:
-		print("you dead mf, make this do something")
+		get_tree().change_scene("res://Scenes/Shop.tscn")
 
 # Get all BulletSpawners that are children of this node
 func get_child_bullet_spawners():
