@@ -18,6 +18,9 @@ scale = 5.0
 
 [node name="Coins" type="Particles2D"]
 position = Vector2( 257.667, 551.535 )
+emitting = false
 amount = 5
+one_shot = true
+explosiveness = 0.8
 process_material = SubResource( 1 )
 texture = ExtResource( 1 )
