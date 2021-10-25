@@ -1,6 +1,8 @@
 extends Area2D
 
 
+export var next : bool = false;
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -18,4 +20,7 @@ func _ready():
 
 func _on_LevelChange1_body_entered(body):
 	if body is Player:
-		get_tree().change_scene("res://Scenes/Level2.tscn")
+		if next:
+			get_tree().change_scene("res://Scenes/End.tscn");
+		else:
+			get_tree().change_scene("res://Scenes/Level2.tscn")
