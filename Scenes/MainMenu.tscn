@@ -10,14 +10,33 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color( 0.670588, 0.894118, 0.952941, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.33594
+margin_right = -8.33594
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -67.5
+margin_left = -138.0
 margin_top = -300.0
-margin_right = 67.5
+margin_right = 137.0
 margin_bottom = 300.0
 custom_constants/separation = 10
 alignment = 1
@@ -27,31 +46,23 @@ __meta__ = {
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 margin_top = 260.0
-margin_right = 135.0
+margin_right = 275.0
 margin_bottom = 280.0
 focus_neighbour_top = NodePath("../QuitButton")
 text = "Start"
 
 [node name="CreditButton" type="Button" parent="VBoxContainer"]
 margin_top = 290.0
-margin_right = 135.0
+margin_right = 275.0
 margin_bottom = 310.0
 text = "Credit"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 margin_top = 320.0
-margin_right = 135.0
+margin_right = 275.0
 margin_bottom = 340.0
 focus_neighbour_bottom = NodePath("../StartButton")
 text = "Quit"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-alignment = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditButton" to="." method="_on_CreditButton_pressed"]
