@@ -12,7 +12,7 @@ export var higher_jump = true
 export var glide: bool = false
 export var max_air_jumps : int = 1
 
-export var health : int = 100
+export var health : int = 3
 
 var current_gravity = gravity
 var walk_direction: int = 0
@@ -53,6 +53,7 @@ func _physics_process(_delta):
 	play_anim()
 
 func damage(dmg):
+	print("damage %d" % dmg)
 	health = max(0, health-dmg)
 	return health
 
@@ -145,8 +146,12 @@ func move_jump():
 		if velocity.y > 0 and glide:
 			current_gravity = 0.03 * gravity
 			velocity.y = max(15, velocity.y)
+		# Moving up and holding space, reduce grav for more jump
 		elif velocity.y < 0:
-			current_gravity = 0.3 * gravity
+			current_gravity = 0.5 * gravity
+		# Moving down but holding space
+		else:
+			current_gravity = 0.75 * gravity
 	else:
 		current_gravity = gravity
 
