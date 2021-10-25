@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/007.png-b444520b5603f539d43d7572cfc8c0fb.stex"
+path="res://.import/Icon_DoubleJump.png-4db582402238d1c0991b058d665e0c44.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Shop/007.png"
-dest_files=[ "res://.import/007.png-b444520b5603f539d43d7572cfc8c0fb.stex" ]
+source_file="res://Textures/Shop/Icon_DoubleJump.png"
+dest_files=[ "res://.import/Icon_DoubleJump.png-4db582402238d1c0991b058d665e0c44.stex" ]
 
 [params]
 

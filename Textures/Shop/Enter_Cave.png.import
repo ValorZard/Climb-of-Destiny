@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/007.png-b444520b5603f539d43d7572cfc8c0fb.stex"
+path="res://.import/Enter_Cave.png-335dc49cda73c31d34e19a7c8d79a71f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Shop/007.png"
-dest_files=[ "res://.import/007.png-b444520b5603f539d43d7572cfc8c0fb.stex" ]
+source_file="res://Textures/Shop/Enter_Cave.png"
+dest_files=[ "res://.import/Enter_Cave.png-335dc49cda73c31d34e19a7c8d79a71f.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/007.png-b444520b5603f539d43d7572cfc8c0fb.stex"
+path="res://.import/Icon_QuadJump.png-4907af01245b2a729bcb4f73b0deae87.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Shop/007.png"
-dest_files=[ "res://.import/007.png-b444520b5603f539d43d7572cfc8c0fb.stex" ]
+source_file="res://Textures/Shop/Icon_QuadJump.png"
+dest_files=[ "res://.import/Icon_QuadJump.png-4907af01245b2a729bcb4f73b0deae87.stex" ]
 
 [params]
 
