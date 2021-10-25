@@ -4,10 +4,11 @@ class_name Player
 
 export var walk_speed : float = 600
 export var walk_acceleration : float = 0.25
-export var jump_speed : float = -1000
+export var jump_speed : float = -800
 export var gravity : float = 70
 export var friction : float = 0.2
 
+export var higher_jump = true
 export var glide: bool = false
 export var max_air_jumps : int = 1
 
@@ -134,7 +135,10 @@ func move_jump():
 		air_jumps = max_air_jumps
 	if Input.is_action_just_pressed("jump") and air_jumps:
 		just_jumped = true
-		velocity.y = jump_speed
+		if higher_jump:
+			velocity.y = 1.3 * jump_speed
+		else:
+			velocity.y = jump_speed
 		air_jumps -= 1
 	if Input.is_action_pressed("jump"):
 		# Moving down, glide
@@ -142,7 +146,7 @@ func move_jump():
 			current_gravity = 0.03 * gravity
 			velocity.y = max(15, velocity.y)
 		elif velocity.y < 0:
-			current_gravity = 0.5 * gravity
+			current_gravity = 0.3 * gravity
 	else:
 		current_gravity = gravity
 
