@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/MainTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://ScrollingCamera.gd" type="Script" id=3]
 [ext_resource path="res://Enemies/StationaryEnemy/Snapper/Snapper.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Enemies/FlyingEnemy/Bat/Bat.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Music/Level2_01.mp3" type="AudioStream" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -49,3 +50,7 @@ position = Vector2( 322.836, -400.069 )
 
 [node name="Bat3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 811.048, -765.32 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
