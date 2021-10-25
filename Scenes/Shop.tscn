@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scenes/TreesTileset.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/OutsideTileset.tres" type="TileSet" id=2]
@@ -27,6 +27,10 @@
 [ext_resource path="res://Textures/Shop/button_pressed.png" type="Texture" id=25]
 [ext_resource path="res://Textures/Shop/button_normal_reversed.png" type="Texture" id=26]
 [ext_resource path="res://Textures/Shop/button_pressed_reversed.png" type="Texture" id=27]
+[ext_resource path="res://Textures/Shop/enter_normal.png" type="Texture" id=28]
+[ext_resource path="res://Textures/Shop/enter_pressed.png" type="Texture" id=29]
+[ext_resource path="res://Scenes/ShopManager.gd" type="Script" id=30]
+[ext_resource path="res://Scenes/ShopItem.gd" type="Script" id=31]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -83,7 +87,6 @@ scale = Vector2( 2.046, 2.046 )
 z_index = 1
 frames = SubResource( 1 )
 animation = "Idle"
-frame = 1
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -95,12 +98,13 @@ zoom = Vector2( 0.4, 0.4 )
 position = Vector2( 760.608, 457.645 )
 scale = Vector2( 2.5, 2.5 )
 frames = SubResource( 2 )
-frame = 2
+frame = 5
 playing = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="ShopManager" type="CanvasLayer" parent="."]
+script = ExtResource( 30 )
 
-[node name="Shop" type="HBoxContainer" parent="CanvasLayer"]
+[node name="Shop" type="HBoxContainer" parent="ShopManager"]
 margin_left = 350.0
 margin_top = 200.0
 margin_right = 400.0
@@ -111,7 +115,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="CanvasLayer/Shop"]
+[node name="BackButton" type="TextureButton" parent="ShopManager/Shop"]
 margin_right = 14.0
 margin_bottom = 25.0
 rect_pivot_offset = Vector2( 0, 12.5 )
@@ -124,7 +128,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Shop"]
+[node name="Frame" type="TextureRect" parent="ShopManager/Shop"]
 margin_left = 12.0
 margin_right = 38.0
 margin_bottom = 25.0
@@ -136,7 +140,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton2" type="TextureButton" parent="CanvasLayer/Shop"]
+[node name="Item" type="TextureButton" parent="ShopManager/Shop/Frame"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.0
+margin_top = -7.5
+margin_right = 8.0
+margin_bottom = 9.5
+script = ExtResource( 31 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ForwardButton" type="TextureButton" parent="ShopManager/Shop"]
 margin_left = 36.0
 margin_right = 50.0
 margin_bottom = 25.0
@@ -149,3 +167,24 @@ stretch_mode = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureButton" type="TextureButton" parent="ShopManager"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -154.092
+margin_top = -320.186
+margin_right = -90.0921
+margin_bottom = -256.186
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ShopManager/Shop/BackButton" to="ShopManager" method="_on_BackButton_pressed"]
+[connection signal="pressed" from="ShopManager/Shop/Frame/Item" to="ShopManager" method="_on_Item_pressed"]
+[connection signal="pressed" from="ShopManager/Shop/ForwardButton" to="ShopManager" method="_on_ForwardButton_pressed"]
+[connection signal="pressed" from="ShopManager/TextureButton" to="ShopManager" method="_on_TextureButton_pressed"]
