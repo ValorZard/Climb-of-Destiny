@@ -7,8 +7,6 @@ var current = 0;
 func _on_TextureButton_pressed():
 	get_tree().change_scene("res://Scenes/Shop.tscn")
 
-
-
 func set_item(item):
 	Item.texture_normal = item.sprite;
 	Item.texture_normal = item.sprite;
@@ -24,8 +22,11 @@ func _on_BackButton_pressed():
 	current -= 1;
 	if current < 0:
 		current = Global.remaining_upgrades.size() - 1;
+	set_item(Global.remaining_upgrades[current]);
 
 func _on_ForwardButton_pressed():
 	current += 1;
-	if current > Global.remaining_upgraded.size() - 1;
+	if current > Global.remaining_upgraded.size() - 1:
 		current = 0;
+	print(current);
+	set_item(Global.remaining_upgrades[current]);

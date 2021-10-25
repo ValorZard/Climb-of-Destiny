@@ -42,6 +42,10 @@ func _on_AnimatedSprite_animation_finished():
 
 func _ready():
 	sprite_node.play()
+	
+	air_jumps = Global.max_player_jumps;
+	glide = Global.can_glide;
+	higher_jump = Global.upgraded_jump;
 
 func _process(_delta):
 	handle_death()
