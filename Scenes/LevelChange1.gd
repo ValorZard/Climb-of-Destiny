@@ -17,4 +17,5 @@ func _ready():
 
 
 func _on_LevelChange1_body_entered(body):
-	get_tree().change_scene("res://Scenes/Level2.tscn")
+	if body is Player:
+		get_tree().change_scene("res://Scenes/Level2.tscn")
