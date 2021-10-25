@@ -1,3 +1,5 @@
+extends Node
+
 var max_player_jumps : int = 1;
 var upgraded_jump : bool = false;
 var can_glide : bool = false;
