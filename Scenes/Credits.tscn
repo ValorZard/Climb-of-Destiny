@@ -71,7 +71,7 @@ margin_right = 553.0
 margin_bottom = 35.0
 theme = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Benjamen Wong - Programmer"
+text = "Benjamin Wong - Programmer"
 __meta__ = {
 "_edit_use_anchors_": false
 }
