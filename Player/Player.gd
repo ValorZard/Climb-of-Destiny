@@ -6,12 +6,14 @@ export var walk_speed : float = 600
 export var walk_acceleration : float = 0.25
 export var jump_speed : float = -1000
 export var gravity : float = 70
-export var friction : float = 0.1
+export var friction : float = 0.2
 
-export var max_air_jumps : int = 3
+export var glide: bool = false
+export var max_air_jumps : int = 1
 
 export var health : int = 100
 
+var current_gravity = gravity
 var walk_direction: int = 0
 var velocity: Vector2 = Vector2.ZERO
 var air_jumps: int = max_air_jumps
@@ -27,7 +29,7 @@ onready var bullet_node: Node = get_tree().get_current_scene().get_node("Bullets
 onready var sprite_node: AnimatedSprite = get_node("AnimatedSprite")
 # All bullet spawners that are children of this node
 # How do you type this?
-onready var bullet_spawners = get_child_bullet_spawners()
+#onready var bullet_spawners = get_child_bullet_spawners()
 
 
 func _on_BulletTimer_timeout():
@@ -45,7 +47,7 @@ func _process(_delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(_delta):
-	shoot()
+#	shoot()
 	move()
 	play_anim()
 
@@ -67,6 +69,7 @@ func handle_death():
 	if health == 0:
 		get_tree().change_scene("res://Scenes/Shop.tscn")
 
+"""
 # Get all BulletSpawners that are children of this node
 func get_child_bullet_spawners():
 	var spawners = []
@@ -95,7 +98,7 @@ func shoot():
 		get_closest_bullet_spawner().shoot()
 		can_shoot = false
 		bullet_timer.start(0)
-
+"""
 # Can use flip() in the future
 func set_sprite_mirror():
 	var orig_scale = sprite_node.get_scale()
@@ -123,7 +126,7 @@ func update_walk_direction():
 	return walk_direction
 
 func move_gravity():
-	velocity.y += gravity
+	velocity.y += current_gravity
 
 func move_jump():
 	just_jumped = false
@@ -133,6 +136,15 @@ func move_jump():
 		just_jumped = true
 		velocity.y = jump_speed
 		air_jumps -= 1
+	if Input.is_action_pressed("jump"):
+		# Moving down, glide
+		if velocity.y > 0 and glide:
+			current_gravity = 0.03 * gravity
+			velocity.y = max(15, velocity.y)
+		elif velocity.y < 0:
+			current_gravity = 0.5 * gravity
+	else:
+		current_gravity = gravity
 
 func play_anim():
 	if just_jumped:
